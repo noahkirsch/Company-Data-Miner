@@ -1,13 +1,26 @@
+var fs = require('fs');
+
 const args = process.argv.slice(2);
 
-if (args[1] === 'locate') {
 
-} else if (args[1] === 'find_before') {
+//Reads the json file and passes the data, command, and argument to a routing function
+fs.readFile(args[0], function(err, data) {
 
-} else if (args[1] === 'find_after') {
+	const companyData = data;
+	route(companyData, args[1], args[2]);
+});
 
-} else if (args[1] === 'find_companies_between_size') {
+//Routing logic for commands
+let route = (data, command, arg) => {
+	if (command === 'locate') {
+		console.log(data.length);
+	} else if (command === 'find_before') {
 
-} else {
-	console.log("Invalid Command, please try again using on of the following commands: locate\nfind_before\nfind_after\nfind_companies_between_size\n")
+	} else if (command === 'find_after') {
+
+	} else if (command === 'find_companies_between_size') {
+
+	} else {
+		console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
+	}
 }
