@@ -5,6 +5,9 @@ const args = process.argv.slice(2);
 
 //Reads the json file and passes the data, command, and argument to a routing function
 fs.readFile(args[0], function(err, data) {
+	if (err) {
+		throw err;
+	}
 
 	const companyData = data;
 	route(companyData, args[1], args[2]);
