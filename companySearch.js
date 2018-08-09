@@ -82,61 +82,51 @@ var logResults = (validCompanies) => {
 }
 
 //Routing logic for commands
-if (command === 'locate') {
-	locate(arg);
-} else if (command === 'find_before') {
-	find_before(arg);
-} else if (command === 'find_after') {
-	find_after(arg);
-} else if (command === 'find_companies_between_size') {
-	const validSizeArgs = ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'];
+var router = (command, arg) => {
+		if (command === 'locate') {
+		locate(arg);
+	} else if (command === 'find_before') {
+		find_before(arg);
+	} else if (command === 'find_after') {
+		find_after(arg);
+	} else if (command === 'find_companies_between_size') {
+		const validSizeArgs = ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'];
 
-	if (validSizeArgs.includes(arg)) {
-		find_companies_between_size(arg);
-	} else {
-		console.log("Invalid argument, please try again using on of the following arguments: \n" + validSizeArgs.join('\n'));
-	}
-} else if (command === 'find_type') {
-	const validTypeArgs = ['N/A',
-												 'Aerospace and Defense',
-												 'Business & Legal Services',
-												 'Data/Technology',
-												 'Education',
-												 'Energy',
-												 'Environment & Weather',
-												 'Finance & Investment',
-												 'Food & Agriculture',
-												 'Geospatial/Mapping',
-												 'Governance',
-												 'Healthcare',
-												 'Housing/Real Estate',
-												 'Insurance',
-												 'Lifestyle & Consumer',
-												 'Media',
-												 'Research & Consulting',
-												 'Scientific Research',
-												 'Transportation'];
+		if (validSizeArgs.includes(arg)) {
+			find_companies_between_size(arg);
+		} else {
+			console.log("Invalid argument, please try again using on of the following arguments: \n" + validSizeArgs.join('\n'));
+		}
+	} else if (command === 'find_type') {
+		const validTypeArgs = ['N/A',
+													 'Aerospace and Defense',
+													 'Business & Legal Services',
+													 'Data/Technology',
+													 'Education',
+													 'Energy',
+													 'Environment & Weather',
+													 'Finance & Investment',
+													 'Food & Agriculture',
+													 'Geospatial/Mapping',
+													 'Governance',
+													 'Healthcare',
+													 'Housing/Real Estate',
+													 'Insurance',
+													 'Lifestyle & Consumer',
+													 'Media',
+													 'Research & Consulting',
+													 'Scientific Research',
+													 'Transportation'];
 
-	if (validTypeArgs.includes(arg)) {
-		find_type(arg);
+		if (validTypeArgs.includes(arg)) {
+			find_type(arg);
+		} else {
+			console.log("Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n" + validTypeArgs.join('\n'));
+		}
 	} else {
-		console.log("Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n" + validTypeArgs.join('\n'));
+		console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
 	}
-} else {
-	console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Call Router to route logic to proper function
+router(command, arg);
