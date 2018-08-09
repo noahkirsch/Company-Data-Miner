@@ -17,11 +17,7 @@ var locate = (arg) => {
 		}
 	});
 
-	if (output.length === 0) {
-		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
-	} else {
-		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
-	}
+	logResults(output);
 }
 
 //Function for find_before command
@@ -34,11 +30,7 @@ var find_before = (arg) => {
 		}
 	});
 
-	if (output.length === 0) {
-		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
-	} else {
-		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
-	}
+	logResults(output);
 }
 
 //Function for find_after command
@@ -51,11 +43,7 @@ var find_after = (arg) => {
 		}
 	});
 
-	if (output.length === 0) {
-		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
-	} else {
-		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
-	}
+	logResults(output);
 }
 
 //Function for find_companies_between_size command
@@ -68,11 +56,7 @@ var find_companies_between_size = (arg) => {
 		}
 	});
 
-	if (output.length === 0) {
-		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
-	} else {
-		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
-	}
+	logResults(output);
 }
 
 //Function for find_type command
@@ -85,10 +69,15 @@ var find_type = (arg) => {
 		}
 	});
 
-	if (output.length === 0) {
+	logResults(output);
+}
+
+//Function for logging data to the console
+var logResults = (validCompanies) => {
+	if (validCompanies.length === 0) {
 		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
 	} else {
-		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+		console.log('Company Names: \n' + validCompanies.join(', ') + '\n\nNumber of Companies: ' + validCompanies.length);
 	}
 }
 
