@@ -8,19 +8,133 @@ The routing function tests that valid json files, commands, and arguments have b
 
 Each command method in companySearch.js will search through the provided data, and valid companies will be pushed to an output array. When the data search has been completed, the output array is passed to the logResults method, which will either log all of the results and the total number of companies found, or a message that no companies have been found.
 
-## Installation and Run instructions
+## Installation and Instructions for Use
 
 	#This program uses Node.js and NPM:
 
 	#To install Node.js, visit this link:
-	```
-	> https://nodejs.org/en/download/
-	```
+
+```
+> https://nodejs.org/en/download/
+
+```
 
 	#To install NPM, use the command:
-	```
-	> npm install npm@latest -g
-	```
+
+```
+> npm install npm@latest -g
+
+```
+
+	#To run the program, use the following command in the terminal:
+
+```
+> node index.js <JSON File> <Command> <Argument>
+
+```
+
+	#Supported Commands:
+
+1. locate
+
+```
+> node index.js <JSON File> locate <State Abbreviation>
+
+```
+
+Example:
+
+```
+> node index.js data.json locate CA
+
+```
+
+2. find_before
+
+```
+> node index.js <JSON File> find_before <Year>
+
+```
+
+Example:
+
+```
+> node index.js data.json find_before 2000
+
+```
+
+3. find_after
+
+```
+> node index.js <JSON File> find_after <Year>
+
+```
+
+Example:
+
+```
+> node index.js data.json find_after 2000
+
+```
+
+4. find_companies_between_size
+
+```
+> node index.js <JSON File> find_companies_between_size <Size>
+```
+
+Example:
+
+```
+> node index.js data.json find_companies_between_size '1-10'
+
+```
+
+* Note only the following are supported arguments for company size, quotations must be used around the argument:
+
+```
+['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+']
+```
+
+5. find_type
+
+```
+> node index.js <JSON File> find_type <Type>
+
+```
+
+Example:
+
+```
+> node index.js data.json find_type 'Data/Technology'
+
+```
+
+* Note only the following are supported arguments for company type, quotations must be used around the argument:
+
+```
+[’N/A’,
+ 'Aerospace and Defense',
+ 'Business & Legal Services',
+ 'Data/Technology',
+ 'Education',
+ 'Energy',
+ 'Environment & Weather',
+ 'Finance & Investment',
+ 'Food & Agriculture',
+ 'Geospatial/Mapping',
+ 'Governance',
+ 'Healthcare',
+ 'Housing/Real Estate',
+ 'Insurance',
+ 'Lifestyle & Consumer',
+ 'Media',
+ 'Research & Consulting',
+ 'Scientific Research',
+ 'Transportation']```
+ ```
+
+
 
 ## Assumptions
 
@@ -59,16 +173,18 @@ This program works under the assumption that the json file is provided in the fo
 	
 	#This program uses the Mocha testing library. To install, use the command:
 
-	```
-	> npm install mocha
-	```
+```
+> npm install mocha
+
+```
 
 
 	#The test file can be run in the terminal using the command:
 
-	```
-	> mocha tests.js
-	```
+```
+> mocha tests.js
+
+```	
 
 ## Future Improvements
 
@@ -77,6 +193,3 @@ The main improvement I would make to this program if I knew that the same data w
 Specifically, MongoDB supports the insertion of JSON files, and would be an easy way to insert a large amount of data without much trouble.
 
 Another improvement I would make with more time would be to allow for a user to query more properties, such as search for keywords in the description. This functionality would make the program more robust and would give it more usability.
-
-
-
