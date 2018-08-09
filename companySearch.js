@@ -58,6 +58,23 @@ var find_after = (arg) => {
 	}
 }
 
+//Function for find_companies_between_size command
+var find_companies_between_size = (arg) => {
+	var output = [];
+
+	companyData.forEach((company) => {
+		if (company.full_time_employees === arg) {
+			output.push(company.company_name);
+		}
+	});
+
+	if (output.length === 0) {
+		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
+	} else {
+		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+	}
+}
+
 //Routing logic for commands
 if (command === 'locate') {
 	locate(arg);
@@ -66,10 +83,30 @@ if (command === 'locate') {
 } else if (command === 'find_after') {
 	find_after(arg);
 } else if (command === 'find_companies_between_size') {
+	const validSizeArgs = ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'];
 
+	if (validSizeArgs.includes(arg)) {
+			find_companies_between_size(arg);
+	} else {
+		console.log("Invalid command, please try again using on of the following commands: \n" + validSizeArgs.join('\n'));
+	}
 } else if (command === 'find_type') {
 
 } else {
 	console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
