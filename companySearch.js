@@ -1,29 +1,37 @@
 var fs = require('fs');
 
 const args = process.argv.slice(2);
+const filePath = args[0];
+const command = args[1];
+const arg = args[2];
 
+const companyData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-//Reads the json file and passes the data, command, and argument to a routing function
-fs.readFile(args[0], function(err, data) {
-	if (err) {
-		throw err;
-	}
+//Function for locate command
+var locate = function(data, arg) {
+	var output = [];
 
-	const companyData = data;
-	route(companyData, args[1], args[2]);
-});
+	data.forEach(function(company, index) {
+		if (company.state === arg) {
+			output.push(company.company_name);
+		}
+	});
+
+	console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+}
 
 //Routing logic for commands
-let route = (data, command, arg) => {
-	if (command === 'locate') {
-		console.log(data.length);
-	} else if (command === 'find_before') {
+if (command === 'locate') {
+	locate(companyData, arg);
+} else if (command === 'find_before') {
 
-	} else if (command === 'find_after') {
+} else if (command === 'find_after') {
 
-	} else if (command === 'find_companies_between_size') {
+} else if (command === 'find_companies_between_size') {
 
-	} else {
-		console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
-	}
+} else if (command === 'find_type') {
+
+} else {
+	console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
 }
+
