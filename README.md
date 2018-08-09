@@ -1,13 +1,5 @@
 # Company-Data-Miner
 
-
-npm install mocha
-
-****Run tests with the command: mocha tests.js
-
-
-**Before we start, a quick note.  Please do not refer to bain in URLs or public repos that you submit.**
-
 ## Design Overview
 
 index.js file parses command line arguments and passes the data, command, and argument to a routing function.
