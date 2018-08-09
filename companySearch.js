@@ -27,9 +27,26 @@ var locate = (arg) => {
 //Function for find_before command
 var find_before = (arg) => {
 	var output = [];
-	
+
 	companyData.forEach((company) => {
 		if (company.year_founded <= parseInt(arg)) {
+			output.push(company.company_name);
+		}
+	});
+
+	if (output.length === 0) {
+		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
+	} else {
+		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+	}
+}
+
+//Function for find_after command
+var find_after = (arg) => {
+	var output = [];
+
+	companyData.forEach((company) => {
+		if (company.year_founded >= parseInt(arg)) {
 			output.push(company.company_name);
 		}
 	});
@@ -47,7 +64,7 @@ if (command === 'locate') {
 } else if (command === 'find_before') {
 	find_before(arg);
 } else if (command === 'find_after') {
-
+	find_after(arg);
 } else if (command === 'find_companies_between_size') {
 
 } else if (command === 'find_type') {
