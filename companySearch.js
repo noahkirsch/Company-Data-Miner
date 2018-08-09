@@ -1,14 +1,7 @@
-var fs = require('fs');
+let companySearch = {};
 
-const args = process.argv.slice(2);
-const filePath = args[0];
-const command = args[1];
-const arg = args[2];
-
-const companyData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-
-//Function for locate command
-var locate = (arg) => {
+//Method for locate command
+companySearch.locate = (companyData, arg) => {
 	var output = [];
 
 	companyData.forEach((company) => {
@@ -17,11 +10,11 @@ var locate = (arg) => {
 		}
 	});
 
-	logResults(output);
+	companySearch.logResults(output);
 }
 
-//Function for find_before command
-var find_before = (arg) => {
+//Method for find_before command
+companySearch.find_before = (companyData, arg) => {
 	var output = [];
 
 	companyData.forEach((company) => {
@@ -30,11 +23,11 @@ var find_before = (arg) => {
 		}
 	});
 
-	logResults(output);
+	companySearch.logResults(output);
 }
 
-//Function for find_after command
-var find_after = (arg) => {
+//Method for find_after command
+companySearch.find_after = (companyData, arg) => {
 	var output = [];
 
 	companyData.forEach((company) => {
@@ -43,11 +36,11 @@ var find_after = (arg) => {
 		}
 	});
 
-	logResults(output);
+	companySearch.logResults(output);
 }
 
-//Function for find_companies_between_size command
-var find_companies_between_size = (arg) => {
+//Method for find_companies_between_size command
+companySearch.find_companies_between_size = (companyData, arg) => {
 	var output = [];
 
 	companyData.forEach((company) => {
@@ -56,11 +49,11 @@ var find_companies_between_size = (arg) => {
 		}
 	});
 
-	logResults(output);
+	companySearch.logResults(output);
 }
 
-//Function for find_type command
-var find_type = (arg) => {
+//Method for find_type command
+companySearch.find_type = (companyData, arg) => {
 	var output = [];
 
 	companyData.forEach((company) => {
@@ -69,11 +62,11 @@ var find_type = (arg) => {
 		}
 	});
 
-	logResults(output);
+	companySearch.logResults(output);
 }
 
-//Function for logging data to the console
-var logResults = (validCompanies) => {
+//Method for logging data to the console
+companySearch.logResults = (validCompanies) => {
 	if (validCompanies.length === 0) {
 		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
 	} else {
@@ -82,18 +75,18 @@ var logResults = (validCompanies) => {
 }
 
 //Routing logic for commands
-var router = (command, arg) => {
+companySearch.router = (companyData, command, arg) => {
 		if (command === 'locate') {
-		locate(arg);
+		companySearch.locate(companyData, arg);
 	} else if (command === 'find_before') {
-		find_before(arg);
+		companySearch.find_before(companyData, arg);
 	} else if (command === 'find_after') {
-		find_after(arg);
+		companySearch.find_after(companyData, arg);
 	} else if (command === 'find_companies_between_size') {
 		const validSizeArgs = ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'];
 
 		if (validSizeArgs.includes(arg)) {
-			find_companies_between_size(arg);
+			companySearch.find_companies_between_size(companyData, arg);
 		} else {
 			console.log("Invalid argument, please try again using on of the following arguments: \n" + validSizeArgs.join('\n'));
 		}
@@ -119,7 +112,7 @@ var router = (command, arg) => {
 													 'Transportation'];
 
 		if (validTypeArgs.includes(arg)) {
-			find_type(arg);
+			companySearch.find_type(companyData, arg);
 		} else {
 			console.log("Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n" + validTypeArgs.join('\n'));
 		}
@@ -128,5 +121,4 @@ var router = (command, arg) => {
 	}
 }
 
-//Call Router to route logic to proper function
-router(command, arg);
+module.exports = companySearch;
