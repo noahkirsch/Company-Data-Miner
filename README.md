@@ -1,41 +1,33 @@
 # Company-Data-Miner
 
-## Design Overview
-
-index.js file parses command line arguments and passes the data, command, and argument to a routing function.
-
-The routing function tests that valid json files, commands, and arguments have been provided. If an appropriate json file, command, and argument has been provided, the routing function passes the data and argument to the appropriate companySearch method, which will then search the JSON file to find the queried data. If appropriate parameters were not provided, the routing function will return an error and give guidance on what valid commands and arguments are.
-
-Each command method in companySearch.js will search through the provided data, and valid companies will be pushed to an output array. When the data search has been completed, the output array is passed to the logResults method, which will either log all of the results and the total number of companies found, or a message that no companies have been found.
-
 ## Installation and Instructions for Use
 
-	#This program uses Node.js and NPM:
+**This program uses Node.js and NPM**
 
-	#To install Node.js, visit this link:
+To install Node.js, visit this link:
 
 ```
 > https://nodejs.org/en/download/
 
 ```
 
-	#To install NPM, use the command:
+To install NPM, use the command:
 
 ```
 > npm install npm@latest -g
 
 ```
 
-	#To run the program, use the following command in the terminal:
+To run the program, use the following command in the terminal:
 
 ```
 > node index.js <JSON File> <Command> <Argument>
 
 ```
 
-	#Supported Commands:
+#Supported Commands:
 
-1. locate
+**1. locate**
 
 ```
 > node index.js <JSON File> locate <State Abbreviation>
@@ -49,7 +41,7 @@ Example:
 
 ```
 
-2. find_before
+**2. find_before**
 
 ```
 > node index.js <JSON File> find_before <Year>
@@ -63,7 +55,7 @@ Example:
 
 ```
 
-3. find_after
+**3. find_after**
 
 ```
 > node index.js <JSON File> find_after <Year>
@@ -77,7 +69,7 @@ Example:
 
 ```
 
-4. find_companies_between_size
+**4. find_companies_between_size**
 
 ```
 > node index.js <JSON File> find_companies_between_size <Size>
@@ -96,7 +88,7 @@ Example:
 ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+']
 ```
 
-5. find_type
+**5. find_type**
 
 ```
 > node index.js <JSON File> find_type <Type>
@@ -134,7 +126,22 @@ Example:
  'Transportation']```
  ```
 
+## Testing
+	
+This program uses the Mocha testing library. To install, use the command:
 
+```
+> npm install mocha
+
+```
+
+
+The test file can be run in the terminal using the command:
+
+```
+> mocha tests.js
+
+```	
 
 ## Assumptions
 
@@ -169,22 +176,13 @@ This program works under the assumption that the json file is provided in the fo
  ]
 ```
 
-## Testing
-	
-	#This program uses the Mocha testing library. To install, use the command:
+## Design Overview
 
-```
-> npm install mocha
+The index.js file parses command line arguments and passes the data, command, and argument to a routing function.
 
-```
+The routing function tests that valid json files, commands, and arguments have been provided. If an appropriate json file, command, and argument has been provided, the routing function passes the data and argument to the appropriate companySearch method, which will then search the JSON file to find the queried data. If appropriate parameters were not provided, the routing function will return an error and give guidance on what valid commands and arguments are.
 
-
-	#The test file can be run in the terminal using the command:
-
-```
-> mocha tests.js
-
-```	
+Each command method in companySearch.js will search through the provided data, and valid companies will be pushed to an output array. When the data search has been completed, the output array is passed to the logResults method, which will either log all of the results and the total number of companies found, or a message that no companies have been found.
 
 ## Future Improvements
 
