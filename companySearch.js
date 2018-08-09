@@ -10,7 +10,7 @@ companySearch.locate = (companyData, arg) => {
 		}
 	});
 
-	companySearch.logResults(output);
+	return output;
 }
 
 //Method for find_before command
@@ -23,7 +23,7 @@ companySearch.find_before = (companyData, arg) => {
 		}
 	});
 
-	companySearch.logResults(output);
+	return output;
 }
 
 //Method for find_after command
@@ -36,7 +36,7 @@ companySearch.find_after = (companyData, arg) => {
 		}
 	});
 
-	companySearch.logResults(output);
+	return output;
 }
 
 //Method for find_companies_between_size command
@@ -49,7 +49,7 @@ companySearch.find_companies_between_size = (companyData, arg) => {
 		}
 	});
 
-	companySearch.logResults(output);
+	return output;
 }
 
 //Method for find_type command
@@ -62,7 +62,7 @@ companySearch.find_type = (companyData, arg) => {
 		}
 	});
 
-	companySearch.logResults(output);
+	return output;
 }
 
 //Method for logging data to the console
@@ -71,24 +71,26 @@ companySearch.logResults = (validCompanies) => {
 		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
 	} else {
 		console.log('Company Names: \n' + validCompanies.join(', ') + '\n\nNumber of Companies: ' + validCompanies.length);
+		return null;
 	}
 }
 
 //Routing logic for commands
 companySearch.router = (companyData, command, arg) => {
 		if (command === 'locate') {
-		companySearch.locate(companyData, arg);
+		companySearch.logResults(companySearch.locate(companyData, arg));
 	} else if (command === 'find_before') {
-		companySearch.find_before(companyData, arg);
+		companySearch.logResults(companySearch.find_before(companyData, arg));
 	} else if (command === 'find_after') {
-		companySearch.find_after(companyData, arg);
+		companySearch.logResults(companySearch.find_after(companyData, arg));
 	} else if (command === 'find_companies_between_size') {
 		const validSizeArgs = ['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'];
 
 		if (validSizeArgs.includes(arg)) {
-			companySearch.find_companies_between_size(companyData, arg);
+			ccompanySearch.logResults(ompanySearch.find_companies_between_size(companyData, arg));
 		} else {
 			console.log("Invalid argument, please try again using on of the following arguments: \n" + validSizeArgs.join('\n'));
+			return null;
 		}
 	} else if (command === 'find_type') {
 		const validTypeArgs = ['N/A',
@@ -112,12 +114,14 @@ companySearch.router = (companyData, command, arg) => {
 													 'Transportation'];
 
 		if (validTypeArgs.includes(arg)) {
-			companySearch.find_type(companyData, arg);
+			companySearch.logResults(companySearch.find_type(companyData, arg));
 		} else {
 			console.log("Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n" + validTypeArgs.join('\n'));
+			return null;
 		}
 	} else {
 		console.log("Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n")
+		return null;
 	}
 }
 
