@@ -8,11 +8,28 @@ const arg = args[2];
 const companyData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 //Function for locate command
-var locate = function(data, arg) {
+var locate = (arg) => {
 	var output = [];
 
-	data.forEach(function(company, index) {
+	companyData.forEach((company) => {
 		if (company.state === arg) {
+			output.push(company.company_name);
+		}
+	});
+
+	if (output.length === 0) {
+		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
+	} else {
+		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+	}
+}
+
+//Function for find_before command
+var find_before = (arg) => {
+	var output = [];
+	
+	companyData.forEach((company) => {
+		if (company.year_founded <= parseInt(arg)) {
 			output.push(company.company_name);
 		}
 	});
@@ -26,9 +43,9 @@ var locate = function(data, arg) {
 
 //Routing logic for commands
 if (command === 'locate') {
-	locate(companyData, arg);
+	locate(arg);
 } else if (command === 'find_before') {
-
+	find_before(arg);
 } else if (command === 'find_after') {
 
 } else if (command === 'find_companies_between_size') {
