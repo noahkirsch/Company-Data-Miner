@@ -25,7 +25,7 @@ To run the program, use the following command in the terminal:
 
 ```
 
-#Supported Commands:
+**Supported Commands:**
 
 **1. locate**
 
@@ -123,7 +123,7 @@ Example:
  'Media',
  'Research & Consulting',
  'Scientific Research',
- 'Transportation']```
+ 'Transportation']
  ```
 
 ## Testing
@@ -178,9 +178,9 @@ This program works under the assumption that the json file is provided in the fo
 
 ## Design Overview
 
-The index.js file parses command line arguments and passes the data, command, and argument to a routing function.
+The index.js file parses command line arguments and passes the data, command, and argument to a routing function in companySearch.js.
 
-The routing function tests that valid json files, commands, and arguments have been provided. If an appropriate json file, command, and argument has been provided, the routing function passes the data and argument to the appropriate companySearch method, which will then search the JSON file to find the queried data. If appropriate parameters were not provided, the routing function will return an error and give guidance on what valid commands and arguments are.
+The routing function tests that valid JSON files, commands, and arguments have been provided. If an appropriate JSON file, command, and argument has been provided, the routing function passes the data and argument to the appropriate companySearch method, which will then search the JSON file to find the queried data. If appropriate parameters were not provided, the routing function will return an error and give guidance on what valid commands and arguments are.
 
 Each command method in companySearch.js will search through the provided data, and valid companies will be pushed to an output array. When the data search has been completed, the output array is passed to the logResults method, which will either log all of the results and the total number of companies found, or a message that no companies have been found.
 
