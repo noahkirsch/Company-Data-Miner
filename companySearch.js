@@ -17,7 +17,11 @@ var locate = function(data, arg) {
 		}
 	});
 
-	console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+	if (output.length === 0) {
+		console.log("There are no results for the command: '" + command + "', and argument: '" + arg + "', please try again.");
+	} else {
+		console.log('Company Names: \n' + output.join(', ') + '\n\nNumber of Companies: ' + output.length);
+	}
 }
 
 //Routing logic for commands
