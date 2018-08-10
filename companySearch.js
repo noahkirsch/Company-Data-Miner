@@ -90,7 +90,7 @@ companySearch.router = (companyData, command, arg) => {
     if (validSizeArgs.includes(arg)) {
       companySearch.logResults(companySearch.find_companies_between_size(companyData, arg), command, arg);
     } else {
-      let logError = `Invalid argument, please try again using on of the following arguments: \n${validSizeArgs.join('\n')}`;
+      companySearch.logError = `Invalid argument, please try again using on of the following arguments: \n${validSizeArgs.join('\n')}`;
       return null;
     }
   } else if (command === 'find_type') {
@@ -117,18 +117,13 @@ companySearch.router = (companyData, command, arg) => {
     if (validTypeArgs.includes(arg)) {
       companySearch.logResults(companySearch.find_type(companyData, arg), command, arg);
     } else {
-      let logError = `Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n${validTypeArgs.join('\n')}`;
+      companySearch.logError = `Invalid argument, please be sure to include the argument in quotes and try again using on of the following arguments: \n${validTypeArgs.join('\n')}`;
       return null;
     }
   } else {
-    let logError = 'Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\nfind_type\n';
-    return null;
+      companySearch.logError = 'Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\nfind_type\n';
+      return null;
   }
 };
-
-// Logs an error if a incorrect command or argument was provided
-if (typeof logError !== 'undefined') {
-  console.log(logError);
-}
 
 module.exports = companySearch;

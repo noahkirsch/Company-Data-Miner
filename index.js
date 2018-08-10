@@ -10,3 +10,8 @@ const companyData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 // Call Router to route logic to proper function
 companySearch.router(companyData, command, arg);
+
+// Logs an error if a incorrect command or argument was provided
+if (typeof companySearch.logError !== 'undefined') {
+  console.log(companySearch.logError);
+}
