@@ -190,4 +190,4 @@ The main improvement I would make to this program if I knew that the same data w
 
 Specifically, MongoDB supports the insertion of JSON files, and would be an easy way to insert a large amount of data without much trouble.
 
-Another improvement I would make with more time would be to allow for a user to query more properties, such as search for keywords in the description. This functionality would make the program more robust and would give it more usability.
+Another improvement I would make with more time would be to allow for a user to query more properties, such as search for keywords in the description. This functionality would make the program more robust and would give it more usability. I would also like for users to be able to combine queries, such as find_after 2000 && find_type 'Data/Technology'.
