@@ -11,7 +11,7 @@ To install Node.js, visit this link:
 
 ```
 
-To install NPM, use the command:
+To update NPM, use the command:
 
 ```
 > npm install npm@latest -g
@@ -131,7 +131,7 @@ Example:
 This program uses the Mocha testing library. To install, use the command:
 
 ```
-> npm install mocha
+> npm install mocha -g
 
 ```
 
