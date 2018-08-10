@@ -120,7 +120,7 @@ companySearch.router = (companyData, command, arg) => {
       return null;
     }
   } else {
-    console.log('Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\n');
+    console.log('Invalid command, please try again using on of the following commands: \nlocate\nfind_before\nfind_after\nfind_companies_between_size\nfind_type');
     return null;
   }
 };
